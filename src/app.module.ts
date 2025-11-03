@@ -6,13 +6,9 @@ import { ConfigModule, ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import enviromentValidation from './config/enviroment.validation';
 import { IDatabase } from './interface/IDatabase';
-import { UsersResolver } from './users/users.resolver';
-import { PostsResolver } from './posts/posts.resolver';
-import { CategoriesResolver } from './categories/categories.resolver';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { CategoriesModule } from './categories/categories.module';
-import { CategoriesResolver } from './categories/categories.resolver';
 
 const ENV = process.env.NODE_ENV;
 
@@ -34,14 +30,13 @@ const ENV = process.env.NODE_ENV;
           synchronize: config.get<boolean>('database.synchronize'),
           migrationsRun: false,
           migrations: ['dist/migrations/*.js'],
-          ssl: !!config.get<boolean>('database.ssl')
-            ? { rejectUnauthorized: false }
-            : {},
           username: config.get<string>('database.username'),
           password: config.get<string>('database.password'),
           host: config.get<string>('database.host'),
           database: config.get<string>('database.database'),
         };
+
+        if (ENV === 'production') db.ssl = { rejectUnauthorized: true };
 
         return {
           type: 'postgres',
@@ -66,6 +61,6 @@ const ENV = process.env.NODE_ENV;
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UsersResolver, PostsResolver, CategoriesResolver],
+  providers: [AppService],
 })
 export class AppModule {}
