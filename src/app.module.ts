@@ -27,7 +27,7 @@ const ENV = process.env.NODE_ENV;
           synchronize: config.get<boolean>('database.synchronize'),
           migrationsRun: false,
           migrations: ['dist/migrations/*.js'],
-          ssl: !!config.get<boolean>('database.username')
+          ssl: !!config.get<boolean>('database.ssl')
             ? { rejectUnauthorized: false }
             : {},
           username: config.get<string>('database.username'),

@@ -10,4 +10,5 @@ export default Joi.object({
   DB_PORT: Joi.number().optional().default(5432),
   DB_DATABASE: Joi.string().required(),
   DB_URL: Joi.string().optional(),
+  DB_SSL_MODE: Joi.boolean().optional().default(false),
 });
