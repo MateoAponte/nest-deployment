@@ -1,0 +1,30 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+{
+  "firtsName": "Juana5",
+  "lastName": "Valeriana5",
+  "email": "JuanVCale55@gmail.com",
+  "password": "JujuVa123@",
+  "isAuth": true
+}
+
+POST http://localhost:3000/users/create-many
+Content-Type: application/json
+{
+  "users": [
+    {
+      "firtsName": "Camilo",
+      "lastName": "Sanchez",
+      "email": "cacamilo@gmail.com",
+      "password": "@Abc123Camilo",
+      "isAuth": true
+    },
+    {
+      "firtsName": "Tommas",
+      "lastName": "Dowhez",
+      "email": "Tomto@gmail.com",
+      "password": "Abc123Tom@",
+      "isAuth": true
+    }
+  ]
+}
