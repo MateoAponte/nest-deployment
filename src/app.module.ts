@@ -30,7 +30,8 @@ const ENV = process.env.NODE_ENV;
         };
 
         console.log(ENV);
-        if (ENV === 'prod') {
+        if (ENV === 'production') {
+          // Vercel cambia el nombre de la variable de entorno
           db.url = config.get<string>('database.url');
           db.ssl = { rejectUnauthorized: false };
         } else {
