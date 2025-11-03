@@ -25,6 +25,8 @@ const ENV = process.env.NODE_ENV;
         const db: IDatabase = {
           autoLoadEntities: config.get<boolean>('database.autoLoadEntities'),
           synchronize: config.get<boolean>('database.synchronize'),
+          migrationsRun: false,
+          migrations: ['dist/migrations/*.js'],
         };
 
         if (ENV === 'prod') {

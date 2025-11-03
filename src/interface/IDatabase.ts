@@ -7,5 +7,7 @@ export interface IDatabase {
   host?: string | undefined;
   database?: string | undefined;
   url?: string | undefined;
+  migrationsRun?: boolean | undefined;
+  migrations?: string[] | undefined;
   ssl?: { rejectUnauthorized: boolean };
 }
