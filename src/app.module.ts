@@ -27,19 +27,15 @@ const ENV = process.env.NODE_ENV;
           synchronize: config.get<boolean>('database.synchronize'),
           migrationsRun: false,
           migrations: ['dist/migrations/*.js'],
+          ssl: !!config.get<boolean>('database.username')
+            ? { rejectUnauthorized: false }
+            : {},
+          username: config.get<string>('database.username'),
+          password: config.get<string>('database.password'),
+          host: config.get<string>('database.host'),
+          database: config.get<string>('database.database'),
         };
 
-        console.log(ENV);
-        if (ENV === 'production') {
-          // Vercel cambia el nombre de la variable de entorno
-          db.url = config.get<string>('database.url');
-          db.ssl = { rejectUnauthorized: false };
-        } else {
-          ((db.username = config.get<string>('database.username')),
-            (db.password = config.get<string>('database.password')),
-            (db.host = config.get<string>('database.host')),
-            (db.database = config.get<string>('database.database')));
-        }
         return {
           type: 'postgres',
           ...db,

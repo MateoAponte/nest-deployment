@@ -9,5 +9,5 @@ export interface IDatabase {
   url?: string | undefined;
   migrationsRun?: boolean | undefined;
   migrations?: string[] | undefined;
-  ssl?: { rejectUnauthorized: boolean };
+  ssl?: { rejectUnauthorized?: boolean } | undefined;
 }
