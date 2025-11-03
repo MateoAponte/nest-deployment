@@ -6,6 +6,13 @@ import { ConfigModule, ConfigService, ConfigType } from '@nestjs/config';
 import databaseConfig from './config/database.config';
 import enviromentValidation from './config/enviroment.validation';
 import { IDatabase } from './interface/IDatabase';
+import { UsersResolver } from './users/users.resolver';
+import { PostsResolver } from './posts/posts.resolver';
+import { CategoriesResolver } from './categories/categories.resolver';
+import { UsersModule } from './users/users.module';
+import { PostsModule } from './posts/posts.module';
+import { CategoriesModule } from './categories/categories.module';
+import { CategoriesResolver } from './categories/categories.resolver';
 
 const ENV = process.env.NODE_ENV;
 
@@ -54,8 +61,11 @@ const ENV = process.env.NODE_ENV;
       //   database: db.database,
       // }),
     }),
+    CategoriesModule,
+    PostsModule,
+    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UsersResolver, PostsResolver, CategoriesResolver],
 })
 export class AppModule {}
