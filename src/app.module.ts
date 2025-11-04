@@ -9,7 +9,8 @@ import { IDatabase } from './interface/IDatabase';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { CategoriesModule } from './categories/categories.module';
-import { join } from 'path';
+import { CacheModule } from '@nestjs/cache-manager';
+import { RedisModule } from './redis/redis.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -61,6 +62,8 @@ const ENV = process.env.NODE_ENV;
       //   database: db.database,
       // }),
     }),
+    CacheModule.register({ isGlobal: true }),
+    RedisModule,
   ],
   controllers: [AppController],
   providers: [AppService],

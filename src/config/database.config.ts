@@ -10,4 +10,5 @@ export default registerAs('database', () => ({
   database: process.env.DB_DATABASE,
   url: process.env.DB_URL,
   ssl: process.env.DB_SSL_MODE,
+  redis: process.env.REDIS_URL,
 }));
