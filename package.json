@@ -29,6 +29,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/typeorm": "^11.0.0",
+    "bullmq": "^5.63.0",
     "cache-manager": "^7.2.4",
     "cross-env": "^10.1.0",
     "ioredis": "^5.8.2",

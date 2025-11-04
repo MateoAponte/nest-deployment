@@ -11,6 +11,7 @@ import { PostsModule } from './posts/posts.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { RedisModule } from './redis/redis.module';
+import { EmailSenderModule } from './email-sender/email-sender.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -64,6 +65,7 @@ const ENV = process.env.NODE_ENV;
     }),
     CacheModule.register({ isGlobal: true }),
     RedisModule,
+    EmailSenderModule,
   ],
   controllers: [AppController],
   providers: [AppService],

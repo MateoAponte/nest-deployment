@@ -12,4 +12,5 @@ export default Joi.object({
   DB_URL: Joi.string().optional(),
   DB_SSL_MODE: Joi.boolean().optional().default(false),
   REDIS_URL: Joi.string().required(),
+  ENABLE_WORKER: Joi.boolean().optional().default(false),
 });
